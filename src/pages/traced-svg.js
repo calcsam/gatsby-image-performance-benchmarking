@@ -66,7 +66,9 @@ const UnsplashMasonry = edges => (
             },
           }}
         >
-          <Img fluid={image.node.childImageSharp.fluid} />
+          {
+            image.node && image.node.childImageSharp && <Img fluid={image.node.childImageSharp.fluid} />
+          }
           <span
             css={{
               ...scale(-1),
@@ -84,14 +86,13 @@ const UnsplashMasonry = edges => (
           >
             <span css={{ color: options.headerColor }}>SVG</span>
             {` `}
-            {numeral(
+            {image.node && image.node.childImageSharp && numeral(
               Buffer.byteLength(
                 image.node.childImageSharp.fluid.tracedSVG,
                 `utf8`
               )
             ).format()}
             {` `}
-            B
           </span>
         </div>
       ))}

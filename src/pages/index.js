@@ -10,11 +10,14 @@ class IndexComponent extends React.Component {
   render() {
     return (
       <Layout location={this.props.location}>
-        <Img
-          css={{ top: 0, left: 0, right: 0, zIndex: -1 }}
-          style={{ position: `absolute` }}
-          fluid={this.props.data.file.childImageSharp.fluid}
-        />
+        {
+          this.props.data.file &&
+          <Img
+            css={{ top: 0, left: 0, right: 0, zIndex: -1 }}
+            style={{ position: `absolute` }}
+            fluid={this.props.data.file.childImageSharp.fluid}
+          />
+        }
         <div
           css={{
             background: `white`,
